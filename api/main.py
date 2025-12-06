@@ -130,12 +130,14 @@ def predict(car_data: CarInput):
         print("\nFinal columns before prediction:", data.columns)
         print("Final data row:\n", data.head())
 
-        # Make prediction
+        # Make prediction and format result
         prediction = model.predict(data)
-        pred_value = float(prediction[0])
-        print("\nPrediction:", pred_value)
+        pred_value = round(float(prediction[0]), 3)  # تقريب لأقرب 3 أرقام عشرية
+        pred_display = f"${pred_value}"  # إضافة $ 
 
-        return {"prediction": pred_value}
+        print("\nPrediction:", pred_display)
+
+        return {"prediction": pred_display}
 
     except Exception as e:
         print("\n❌ ERROR OCCURRED:")
